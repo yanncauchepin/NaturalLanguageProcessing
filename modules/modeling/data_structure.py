@@ -6,6 +6,7 @@ Created on Sun Feb 11 19:02:01 2024
 @author: yanncauchepin
 """
 
+import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -17,14 +18,15 @@ feature vector that contains the counts of how often each word occurs in the
 particular document. Feature vectors will mostly be sparse.
 The contiguous sequences of items are called n-grams. For example, the 1-gram 
 and 2-gram representations of 'My name is Yann' will be :
-1-gram : "My", "name", "is", "Yann"
-2-gram : "My name", "name is", "is Yann""""
+1-gram : "My", "name", "is", "Yann".
+2-gram : "My name", "name is", "is Yann"."""
 def bag_of_words(document, ngram_range=(1,1)) :
     """
     Each index position in the feature vectors corresponds to the integer
     values that are stored as dictionary items in the vocabulary index.
     Values in the feature vectors are also called the raw term frequencies.
     """
+    # can add parameters stop_words='english'
     count = CountVectorizer(ngram_range=ngram_range)
     bag_of_words = count.fit_transform(document)
     return {
@@ -91,5 +93,7 @@ if __name__ == '__main__' :
     document frequency of this term is 3 since the term 'is' occurs in all three
     documents (df = 3).
     """
+    df_document = pd.Series(document)
+    print(df_document)
 
 

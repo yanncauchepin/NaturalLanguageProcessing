@@ -87,14 +87,43 @@ def gensim_lemmatizer(tokens) :
 
 """STOP WORDS"""
 
+"""Stop words are extremely common words and bear not enough useful information to
+distinguish between different classes of documents."""
+
 if not os.path.exists(os.path.join(nltk.data.find('corpora'), 'stopwords', 'english')):
     nltk.download('stopwords')
 from nltk.corpus import stopwords
-"""Stop words are extremely common words and bear not enough useful information to
-distinguish between different classes of documents."""
 def stop_word(tokens) :
     stop = stopwords.words('english')
     return [token for token in tokens if token not in stop]
+
+
+"""CASE FOLDING"""
+
+"""Case folding is a strategy where all the letters in the are converted to 
+lowercase. Problems arise in situations where proper nouns are dereived from
+common noun terms : case folding will become a bottleneck as case-based
+distinction becomes an important feature."""
+
+
+def case_folding(tokens) :
+    """To test"""
+    return [token.lower() for token in tokens]
+
+
+"""N-GRAMS"""
+
+from nltk.util import ngrams
+def ngrams_tokenizer(tokens, ngram) :
+    """To test"""
+    return list(ngrams(tokens,ngram))
+
+
+"""SORTING"""
+
+def sort(tokens) :
+    """To test"""
+    return sorted(tokens)
 
 
 if __name__ == '__main__' :

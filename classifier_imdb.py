@@ -14,7 +14,7 @@ import modules.cleaning.tokenizer as cleaning_tokenizer
 if __name__ == '__main__' :
     
     df_imdb = imdb_preprocessing.load_dataframe()
-    df_imdb= cleaning_parser.df_parser_imdb(df_imdb, 'review')
+    df_imdb= cleaning_parser.imdb_df_parser(df_imdb, 'review')
     
     imdb_tokens = cleaning_tokenizer.porter_stemming_tokenizer(df_imdb.loc[0, 'review'])
     print(cleaning_tokenizer.stop_word(imdb_tokens))

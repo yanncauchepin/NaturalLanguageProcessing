@@ -10,7 +10,8 @@ import re
 import pandas as pd
 
 
-def __text_parser_imdb(text) :
+def imdb_text_parser(text) :
+    """To test"""
     # remove all of the HTML markup
     text = re.sub('<[^>]*>', '', text)
     # store emoticons and remove the nose character
@@ -21,17 +22,19 @@ def __text_parser_imdb(text) :
     return text
 
 
-def df_parser_imdb(df, column_name) :
+def imdb_df_parser(df, column_name) :
     if column_name not in df.columns :
         raise ValueError(f"Column '{column_name}' is not present in the dataframe provided.\n")
     else :
-        df[column_name] = df[column_name].apply(__text_parser_imdb)
+        df[column_name] = df[column_name].apply(text_parser_imdb)
     return df
 
 
 from bs4 import BeautifulSoup
 """BeautifulSoup module with the HTML Parser parameter is a HTML parser object.
 An example could be 'soup = BeautifulSoup(html_text, "html.parser")'."""
+def html_beautiful_soup_parser(html) :
+    return BeautifulSoup(html).get_text()
 
 
 if __name__ == '__main__' :
@@ -43,6 +46,8 @@ if __name__ == '__main__' :
                  "<html>:-) Another review with more <em>markup</em> and punctuation! </html>"]
         }
     df = pd.DataFrame(data)
-    df_cleaned = df_parser_imdb(df, 'text')
+    df_cleaned = imdb_df_parser(df, 'text')
     print(f"- First test review :\n{df_cleaned.loc[0, 'text']}")
     print(f"- Second test review :\n{df_cleaned.loc[1, 'text']}")
+    
+    html = "<!DOCTYPE html><html><body><h1>My First Heading</h1><p>My first paragraph.</p></body></html>"

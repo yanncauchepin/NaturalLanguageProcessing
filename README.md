@@ -1,5 +1,5 @@
 # Natural Language Processing #
-> ### Language : Python ###
+> ### Language : Python ###
 
 This code implements a generic package to handle natural language processing and apply it to several machine learning task. The repository is currently in progress.
 

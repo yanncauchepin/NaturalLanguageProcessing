@@ -12,15 +12,12 @@ import pandas as pd
 from tqdm import tqdm
 import numpy as np
 
-"""
-The movie review dataset consists of 50,000 polar movie reviews that are labeled
+"""The movie review dataset consists of 50,000 polar movie reviews that are labeled
 as either positive or negative; here, positive means that a movie was rated with
 more than six stars on IMDb, and negative means that a movie was rated with fewer
 than five stars on IMDb.
-
 For our own convenience, we will also store the assembled and shuffled movie review
-dataset as a CSV file.
-"""
+dataset as a CSV file."""
 
 root_path = "/media/yanncauchepin/ExternalDisk/Datasets/NaturalLanguageProcessing/classifier_imdb/"
 input_folder_path = "imdb"

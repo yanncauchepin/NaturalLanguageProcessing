@@ -26,7 +26,7 @@ def imdb_df_parser(df, column_name) :
     if column_name not in df.columns :
         raise ValueError(f"Column '{column_name}' is not present in the dataframe provided.\n")
     else :
-        df[column_name] = df[column_name].apply(text_parser_imdb)
+        df[column_name] = df[column_name].apply(imdb_text_parser)
     return df
 
 

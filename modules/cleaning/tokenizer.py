@@ -9,11 +9,11 @@ Created on Sun Feb 11 19:37:28 2024
 import nltk
 
 
-def split_tokenizer(text) :
+def _tokenizer(text) :
     return text.split()
 
 
-def nltk_tokenizer(text) :
+def tokenizer(text) :
     """To test"""
     return nltk.tokenize(text)
 

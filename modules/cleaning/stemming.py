@@ -6,6 +6,7 @@ Created on Sun Feb 11 19:37:28 2024
 @author: yanncauchepin
 """
 
+import os
 import nltk
 
 
@@ -93,7 +94,7 @@ distinguish between different classes of documents."""
 if not os.path.exists(os.path.join(nltk.data.find('corpora'), 'stopwords', 'english')):
     nltk.download('stopwords')
 from nltk.corpus import stopwords
-def stop_word(tokens) :
+def stop_word_english(tokens) :
     stop = stopwords.words('english')
     return [token for token in tokens if token not in stop]
 
@@ -136,7 +137,7 @@ if __name__ == '__main__' :
     stemmed_tokens = porter_stemming_tokenizer(tokens)
     print("Porter stemming output :", stemmed_tokens)
         
-    tokens_without_stopwords = stop_word(tokens)
+    tokens_without_stopwords = stop_word_english(tokens)
     print("Tokens without stopwords :", tokens_without_stopwords)
     '''
     

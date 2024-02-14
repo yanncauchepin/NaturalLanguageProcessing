@@ -3,6 +3,8 @@
 
 This code implements a generic package to handle natural language processing and apply it to several machine learning task. The repository is currently in progress.
 
+***Hands-On Python Natural Language Processing*** by *Aman Kedia*, *Mayank Rasu*
+
 ## Prerequisites ##
 
 Before running this code, ensure you have the following :
@@ -15,5 +17,5 @@ Before running this code, ensure you have the following :
 
 ## To do list ##
 
-- [ ] Complete README description, add a bibliography.
+- [ ] Complete README description.
 - [ ] Implementation in progress.

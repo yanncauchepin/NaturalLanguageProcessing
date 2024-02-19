@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Feb 11 19:37:28 2024
-
-@author: yanncauchepin
-"""
-
 import nltk
 
 
@@ -28,7 +20,7 @@ def customized_regex_tokenizer(regex, text) :
 def blank_line_tokenizer(text) :
     """nltk BlankLine"""
     pass
-    
+
 
 def word_punct_tokenizer(text) :
     """nltk WordPunct"""
@@ -51,17 +43,15 @@ def tweet_tokenizer(text) :
 
 
 if __name__ == '__main__' :
-    
+
     """EXAMPLE"""
-    
+
     '''
     text = "This is a test sentence for tokenization."
-    
+
     tokens = split_tokenizer(text)
     print("Tokenization output :", tokens)
-    
+
     takens = nltk_tokenizer(text)
     print("Tokenization output :", tokens)
     '''
-    
-    

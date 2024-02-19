@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Feb 11 19:19:34 2024
-
-@author: yanncauchepin
-"""
-
 import re
 import pandas as pd
 
@@ -38,9 +30,9 @@ def html_beautiful_soup_parser(html) :
 
 
 if __name__ == '__main__' :
-    
+
     """EXAMPLE"""
-    
+
     data = {
         'text': ["<html>This is a test review with <em>HTML</em> markup and some punctuation, like :) and :-)</html>",
                  "<html>:-) Another review with more <em>markup</em> and punctuation! </html>"]
@@ -49,5 +41,5 @@ if __name__ == '__main__' :
     df_cleaned = imdb_df_parser(df, 'text')
     print(f"- First test review :\n{df_cleaned.loc[0, 'text']}")
     print(f"- Second test review :\n{df_cleaned.loc[1, 'text']}")
-    
+
     html = "<!DOCTYPE html><html><body><h1>My First Heading</h1><p>My first paragraph.</p></body></html>"

@@ -1,18 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Feb 11 19:37:28 2024
-
-@author: yanncauchepin
-"""
-
 import os
 import nltk
 
 
 """STEMMING"""
 
-"""Word stemming is the process of transforming a word into its root form. 
+"""Word stemming is the process of transforming a word into its root form.
 It allows us to map related words to the same stem.
 Potential problems arise in the form of over-stemming and under-stemming :
 - over-stemming : same root should have been stemmed to different roots
@@ -28,7 +20,7 @@ def porter_stemming(tokens) :
 
 
 from nltk.stem.snowball import SnowballStemmer
-"""The Snowball stemming algorithm (Porter2 or English stemmer) is faster than the 
+"""The Snowball stemming algorithm (Porter2 or English stemmer) is faster than the
 original Porter stemmer. It can work with both string and unicode data."""
 def snowball_stemming(tokens) :
     """To test"""
@@ -37,7 +29,7 @@ def snowball_stemming(tokens) :
     return [snwoball(token) for token in tokens]
 
 
-"""The Lancaster stemming (Paice/Husk stemmer) is faster and more aggressive than 
+"""The Lancaster stemming (Paice/Husk stemmer) is faster and more aggressive than
 the original Porter stemmer : it produces shorter and more obscur words.
 Available throught NLTK."""
 def lancaster_stemming(tokens) :
@@ -58,8 +50,8 @@ def lovins_stemming(tokens) :
 
 """LEMMATIZATION"""
 
-"""Lemmatization is a process wherein the context is used to convert a word to 
-its meaningful base form : it aims to obtain the canonical (grammatically correct) 
+"""Lemmatization is a process wherein the context is used to convert a word to
+its meaningful base form : it aims to obtain the canonical (grammatically correct)
 forms of individual words, so-called lemmas. It take into account the neighborhood
 context of the word, part-of-speech tags, the meaning of a word, and so on.
 Same words can have different lemmas depending on the context."""
@@ -101,7 +93,7 @@ def stop_word_english(tokens) :
 
 """CASE FOLDING"""
 
-"""Case folding is a strategy where all the letters in the are converted to 
+"""Case folding is a strategy where all the letters in the are converted to
 lowercase. Problems arise in situations where proper nouns are dereived from
 common noun terms : case folding will become a bottleneck as case-based
 distinction becomes an important feature."""
@@ -128,17 +120,15 @@ def sort(tokens) :
 
 
 if __name__ == '__main__' :
-    
+
     """EXAMPLE"""
-    
+
     '''
     tokens = ["This", "is", "a", "test", "sentence", "with", "some", "stop", "words"]
-    
+
     stemmed_tokens = porter_stemming_tokenizer(tokens)
     print("Porter stemming output :", stemmed_tokens)
-        
+
     tokens_without_stopwords = stop_word_english(tokens)
     print("Tokens without stopwords :", tokens_without_stopwords)
     '''
-    
-    

@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Feb 11 19:02:01 2024
-
-@author: yanncauchepin
-"""
-
 import os
 import sys
 import pandas as pd
@@ -49,7 +41,7 @@ def load_dataframe(source="csv") :
 
 
 if __name__ == '__main__' :
-    
+
     """EXAMPLE"""
-    
+
     df = load_dataframe(source="folder")

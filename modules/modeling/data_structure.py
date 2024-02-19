@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Feb 11 19:02:01 2024
-
-@author: yanncauchepin
-"""
-
 import pandas as pd
 import numpy as np
 
@@ -40,10 +32,10 @@ def _bag_of_words(document, vocabulary_index) :
 
 from sklearn.feature_extraction.text import CountVectorizer
 """The bag-of-words model allows us to represent text as numerical feature vectors.
-The idea behind bag-of-words is to create a vocabulary of unique tokens and a 
-feature vector that contains the counts of how often each word occurs in the 
+The idea behind bag-of-words is to create a vocabulary of unique tokens and a
+feature vector that contains the counts of how often each word occurs in the
 particular document. Feature vectors will mostly be sparse.
-The contiguous sequences of items are called n-grams. For example, the 1-gram 
+The contiguous sequences of items are called n-grams. For example, the 1-gram
 and 2-gram representations of 'My name is Yann' will be :
 - 1-gram : "My", "name", "is", "Yann"
 - 2-gram : "My name", "name is", "is Yann"
@@ -71,7 +63,7 @@ def bag_of_words(document, ngram_range=(1,1)) :
     return {
         "vocabulary_index" : count.vocabulary_,
         "feature_vectors" : bag_of_words.toarray()
-        }    
+        }
 
 
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -80,9 +72,9 @@ the frequently occurring words in the feature vectors. The tf-idf can be defined
 as the product of the term frequency and the inverse document frequency :
 tf-idf(t,d) = tf(t,d) x idf(t,d)
 - tf(t, d) is the term frequency in a document, count.vocabulary_ here in the code.
-A well process is to normalize it by dividing it with the count of terms in the 
+A well process is to normalize it by dividing it with the count of terms in the
 document.
-- idf(t, d) is the inverse document frequency that measures the importance of 
+- idf(t, d) is the inverse document frequency that measures the importance of
 a term in a document, which can be calculated as follows :
 idf(t,d) = log( nd / (1 + df(d,t)) ) where :
 - nd is the total number of documents.
@@ -90,10 +82,10 @@ idf(t,d) = log( nd / (1 + df(d,t)) ) where :
 - addition plus one in the denominator is a simple choice which is not always
 applied in order to avoid division by zero. Corresponds to parameter 'smooth_idf'
 in TfidfTransformer.
-The pattern of information carried across terms that are rarely present but 
+The pattern of information carried across terms that are rarely present but
 carry a high amount of information is better handle by tf-idf.
 Each tfidf row or vector is normalized to have a unit norm :
-- l2, the sum of squares of the vector elements is equal to 1. 
+- l2, the sum of squares of the vector elements is equal to 1.
 - l1, the sum of absolute values of the vector elements is 1.
 Do not take into account context, semantics or meanings associated with tokens."""
 def tfidf_bag_of_words(document, ngram_range=(1,1)) :
@@ -152,9 +144,9 @@ def tfidf_bag_of_words_alternative(document, ngram_range=(1,1)) :
 
 
 if __name__ == '__main__' :
-    
+
     """EXAMPLE"""
-    
+
     document = np.array(['The sun is shining',
                  'The weather is sweet',
                  'The sun is shining, the weather is sweet,'
@@ -176,5 +168,3 @@ if __name__ == '__main__' :
     document frequency of this term is 3 since the term 'is' occurs in all three
     documents (df = 3).
     """
-
-

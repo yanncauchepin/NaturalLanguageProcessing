@@ -20,6 +20,7 @@ Doc2Vec expects a list of tokens as input for each document."""
 """Transform tokenized document into TaggedDocument format"""
 documents = [TaggedDocument(doc, [i]) for i, doc in enumerate(common_texts)]
 documents
+
 """Build and train a basic Doc2Vec model.
 Vector size of 5 denotes that each document will be represented by a vector of
 five floating-point values."""
@@ -37,6 +38,53 @@ model.wv.key_to_index
 vector = model.infer_vector(['user', 'interface', 'for', 'computer'])
 print(vector)
 
+"""min_count"""
+model = Doc2Vec(documents, vector_size=50, min_count=3, epochs=40)
+model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+len(model.wv.key_to_index)
+model.wv.key_to_index
+vector = model.infer_vector(['user', 'interface', 'for', 'computer'])
+"""paragraph vector.
+vector size is 50 and only 4 terms are in the vocabulary. 
+because min_count was  3 and, consequently, terms that were equal to or greater 
+than 3 terms are present in the vocabulary now."""
+print(vector)
+
+"""dm parameter for switching between PVDM and PVDBOW
+dm = 0 for PVDBOW, dm = 1 for PVDM"""
+model = Doc2Vec(documents, vector_size=50, min_count=2, epochs=40, dm=1)
+model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+
+"""PVDM takes word vectors into account + two additional parameters :
+dm_concat : 1 to concatenate context vectors while trying to predict the target word
+    leads to building a larger model since multiple word embeddings get concatenated.
+    set to 1 to not concatenate and use lighter model
+dm_mean : to sum or average the context vectors instead of concatenating them
+    set to 1 to take the mean of the context word vectors
+    set to 0 to take the sum of the context word vectors"""
+
+model = Doc2Vec(documents, vector_size=50, min_count=2, epochs=40, window=2, dm=1, 
+                alpha=0.3, min_alpha=0.05, dm_concat=1)
+model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+model = Doc2Vec(documents, vector_size=50, min_count=2, epochs=40, window=2, dm=1, 
+                dm_concat=0, dm_mean=1, alpha=0.3, min_alpha=0.05)
+model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+
+"""window size controls distance between the word under concentration and the word to be
+predicted"""
+model = Doc2Vec(documents, vector_size=50, min_count=2, epochs=40, window=2, dm=0)
+model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+
+"""learning rate can be specifiy (initial) with alpha. min alpha specify the value
+the learning rate should dorp to over the course of training."""
+model = Doc2Vec(documents, vector_size=50, min_count=2, epochs=40, window=2, dm=1, 
+                alpha=0.3, min_alpha=0.05)
+model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+
+"""other parameters:
+    negative : enabling negative sampling similar to word2vec
+    max_vocab_size : limit the vocabulary"""
+    
 
 if __name__ == '__main__' :
 

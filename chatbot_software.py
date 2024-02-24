@@ -1,6 +1,6 @@
 import numpy as np
 
-import collection.chatbot_software.preprocessing as software_preprocessing
+import samples.chatbot_software.preprocessing as software_preprocessing
 
 import modules.cleaning.parser as cleaning_parser
 import modules.cleaning.tokenizer as cleaning_tokenizer

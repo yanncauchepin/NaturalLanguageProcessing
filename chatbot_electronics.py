@@ -1,4 +1,4 @@
-import collection.chatbot_electronics.preprocessing as electronics_preprocessing
+import samples.chatbot_electronics.preprocessing as electronics_preprocessing
 
 import modules.cleaning.parser as cleaning_parser
 import modules.cleaning.tokenizer as cleaning_tokenizer

@@ -1,4 +1,4 @@
-import collection.classifier_imdb.preprocessing as imdb_preprocessing
+import samples.classifier_imdb.preprocessing as imdb_preprocessing
 
 import modules.cleaning.parser as cleaning_parser
 import modules.cleaning.tokenizer as cleaning_tokenizer

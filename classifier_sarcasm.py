@@ -176,3 +176,42 @@ print('The size of X_train is:', len(X_train),
       '\nThe size of y_train is:', len(y_train),
       '\nThe size of X_test is:', len(X_test),
       '\nThe size of y_test is:', len(y_test)) 
+
+
+FILTERS=8
+KERNEL_SIZE=3
+HIDDEN_LAYER_1_NODES=10
+HIDDEN_LAYER_2_NODES=5
+DROPOUT_PROB=0.35
+NUM_EPOCHS=10
+BATCH_SIZE=50
+
+model = Sequential()
+model.add(Conv1D(
+        FILTERS, 
+        KERNEL_SIZE, 
+        padding='same',                                       
+        strides=1, 
+        activation='relu', 
+        input_shape = (MAX_LENGTH, VECTOR_SIZE)
+        ))
+model.add(GlobalMaxPooling1D())
+model.add(Dense(HIDDEN_LAYER_1_NODES, activation='relu'))
+model.add(Dropout(DROPOUT_PROB))
+model.add(Dense(HIDDEN_LAYER_2_NODES, activation='relu'))
+model.add(Dropout(DROPOUT_PROB))
+model.add(Dense(1, activation='sigmoid'))
+
+print(model.summary())
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) 
+
+training_history = model.fit(X_train, y_train, epochs=NUM_EPOCHS, batch_size=BATCH_SIZE)
+
+loss, accuracy = model.evaluate(X_test, y_test, verbose=False)
+print("Testing Accuracy:  {:.4f}".format(accuracy)) 
+
+model_structure = model.to_json()
+with open("Output Files/sarcasm_detection_model_cnn.json", "w") as json_file:
+    json_file.write(model_structure)
+model.save_weights("Output Files/sarcasm_detection_model_cnn.h5")

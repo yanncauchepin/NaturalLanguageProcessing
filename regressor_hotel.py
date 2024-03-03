@@ -9,7 +9,7 @@ from keras.utils import np_utils
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout, Embedding
 
-root_path = "/media/yanncauchepin/ExternalDisk/Datasets/NaturalLanguageProcessing/classifier_hotel/"
+root_path = "/media/yanncauchepin/ExternalDisk/Datasets/NaturalLanguageProcessing/regressor_hotel/"
 input_path = "data/makemytrip_com_travel_sample.csv"
 
 
@@ -54,7 +54,7 @@ cleaned_data, all_unique_words_in_each_description = \
     clean_data(data)
 unique_words, length_of_unique_words = \
     unique_words(all_unique_words_in_each_description)
-    
+
 """
 The cleaned_data parameter contains our preprocessed data.
 The unique_words parameter contains our list of unique words.

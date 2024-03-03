@@ -19,6 +19,7 @@ from keras import layers
 from keras.layers import Dense, Dropout, Conv1D, GlobalMaxPooling1D
 import h5py
 
+import samples.classifier_sarcasm.preprocessing as sarcasm_preprocessing
 
 
 def text_clean(corpus, keep_list):
@@ -104,18 +105,7 @@ def preprocess(corpus, keep_list=[], cleaning = True, stemming = False, stem_typ
 
 
 
-def parse_data(file):
-    for l in open(file,'r'):
-        yield json.loads(l)
-
-root_path = "/media/yanncauchepin/ExternalDisk/Datasets/NaturalLanguageProcessing/classifier_sarcasm/"
-input_path = "sarcasm/Sarcasm_Headlines_Dataset_v2.json"
-dataset_path = os.path.join(root_path, input_path)
-
-
-data = list(parse_data(dataset_path))
-df = pd.DataFrame(data)
-df.pop('article_link')
+df = sarcasm_preprocessing.load_dataframe()
 headlines = preprocess(df['headline'], lemmatization=True, remove_stopwords=True)
 
 from gensim.models import KeyedVectors

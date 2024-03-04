@@ -1,57 +1,61 @@
 import nltk
+# nltk.download('punkt') ISSUE
+from nltk.tokenize import (
+    word_tokenize,
+    RegexpTokenizer,
+    TreebankWordTokenizer,
+    TweetTokenizer
+    )
 
+class Tokenizer():
 
-def _tokenizer(text) :
-    return text.split()
+    def __init__(self):
+        pass
 
-
-def tokenizer(text) :
-    """To test"""
-    return nltk.tokenize(text)
-
-
-from nltk.tokenize import RegexpTokenizer
-def customized_regex_tokenizer(regex, text) :
-    """To test"""
-    regexp = RegexpTokenizer(regex)
-    return regexp.tokenize(text)
-
-
-def blank_line_tokenizer(text) :
-    """nltk BlankLine"""
-    pass
-
-
-def word_punct_tokenizer(text) :
-    """nltk WordPunct"""
-    pass
-
-
-from nltk.tokenize import TreebankWordTokenizer
-def treebank_word_tokenizer(text) :
-    """To test"""
-    treebankword = TreebankWordTokenizer()
-    return treebankword.tokenize(text)
-
-
-from nltk.tokenize import TweetTokenizer
-def tweet_tokenizer(text) :
-    """To test"""
-    # can add parameters strip_handles=True, reduce_len=True, preserve_case=False
-    tweet = TweetTokenizer()
-    return tweet.tokenize(text)
+    @staticmethod
+    def split(text) :
+        return text.split()
+    
+    @staticmethod
+    def standard(text) :
+        """Not work"""
+        return word_tokenize(text)
+    
+    @staticmethod    
+    def customized_regex(regex, text) :
+        regexp = RegexpTokenizer(regex)
+        return regexp.tokenize(text)
+    
+    @staticmethod
+    def blank_line(text) :
+        """nltk BlankLine"""
+        pass
+    
+    @staticmethod
+    def word_punct(text) :
+        """nltk WordPunct"""
+        pass
+    
+    @staticmethod
+    def treebank_word(text) :
+        treebankword = TreebankWordTokenizer()
+        return treebankword.tokenize(text)
+    
+    @staticmethod
+    def tweet(text) :
+        # can add parameters strip_handles=True, reduce_len=True, preserve_case=False
+        tweet = TweetTokenizer()
+        return tweet.tokenize(text)
 
 
 if __name__ == '__main__' :
 
     """EXAMPLE"""
 
-    '''
     text = "This is a test sentence for tokenization."
 
-    tokens = split_tokenizer(text)
+    tokens = Tokenizer.tokenizer(text)
     print("Tokenization output :", tokens)
 
-    takens = nltk_tokenizer(text)
+    takens = Tokenizer.treebank_word_tokenizer(text)
     print("Tokenization output :", tokens)
-    '''

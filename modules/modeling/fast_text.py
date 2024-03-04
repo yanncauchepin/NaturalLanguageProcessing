@@ -1,3 +1,10 @@
+
+class FastText():
+    
+    def __init__(self):
+        pass
+    
+
 """encapsulating each word as a combination of character n-grams. Each of these 
 n-grams has a vector representation. Word representations are actually a result 
 of the summation of their character n-grams"""

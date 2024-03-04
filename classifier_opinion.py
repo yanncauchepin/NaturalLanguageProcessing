@@ -1,7 +1,7 @@
 import sys
 sys.path.append('/home/yanncauchepin/Git/PublicProjects/NaturalLanguageProcessing/')
 
-import samples.classifier_opinion.preprocessing as opinion_preprocessing
+import samples.classifier_opinions.preprocessing as opinion_preprocessing
 
 import modules.cleaning.parser as cleaning_parser
 import modules.cleaning.tokenizer as cleaning_tokenizer

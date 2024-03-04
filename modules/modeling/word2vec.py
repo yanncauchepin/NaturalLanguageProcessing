@@ -1,21 +1,24 @@
-import numpy as np
 
-"""Word2vec is a modern alternative to the bag-of-words model.
-The word2vec algorithm is an unsupervised learning algorithm based on neural
-networks that attempts to automatically learn the relationship between words.
-The idea behind word2vec is to put words that have similar meanings into similar
-clusters, and via clever vector spacing, the model can reproduce certain words
-using simple vector math, for example, king – man + woman = queen.
-The output is a matrix of shape |V|*D where |V| is the size of the vocabulary
-and D is the number of dimensions used to represent each word vector. Generally,
-D takes values between 50 and 300 in real-life use cases.
-Word2vec models can be trained by two approches :
-- Predicting the context word using the target word as input, which is referred
-to as the Skip-gram method.
-- Predicting the target word using the context words as input, which is referred
-to as the Continuous Bag-of-Words (CBOW) method."""
-def word2vec() :
-    pass
+class Word2Vec():
+    """Word2vec is a modern alternative to the bag-of-words model.
+    The word2vec algorithm is an unsupervised learning algorithm based on neural
+    networks that attempts to automatically learn the relationship between words.
+    The idea behind word2vec is to put words that have similar meanings into similar
+    clusters, and via clever vector spacing, the model can reproduce certain words
+    using simple vector math, for example, king – man + woman = queen.
+    The output is a matrix of shape |V|*D where |V| is the size of the vocabulary
+    and D is the number of dimensions used to represent each word vector. Generally,
+    D takes values between 50 and 300 in real-life use cases.
+    Word2vec models can be trained by two approches :
+    - Predicting the context word using the target word as input, which is referred
+    to as the Skip-gram method.
+    - Predicting the target word using the context words as input, which is referred
+    to as the Continuous Bag-of-Words (CBOW) method."""
+    
+    def __init__(self):
+        pass
+
+
 
 
 """The Skip-gram method of Word2vec takes several parameters to predict the
@@ -39,9 +42,6 @@ To normalize the output vector, the uses is to apply a softmax function to
 transform each values between 0 and 1 and to set their sum up to 1.
 By a process of loss calculation and backpropagation, we could train the model
 on labeled data and update both embedding and context matrix."""
-def softmax(vector):
-    return np.exp(vector)/np.sum(np.exp(vector))
-
 
 """The CBOW method is very similar to the Skip-gram method but here we try to
 predict the target word from the context word as input."""

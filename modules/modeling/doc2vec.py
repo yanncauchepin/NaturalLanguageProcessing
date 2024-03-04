@@ -1,16 +1,19 @@
-"""Doc2vec is a unsupervised algorithm.
-There is two ways of building paragraph vectors:
-- Distributed Memory Model of Paragraph Vectors (PV-DM) where paragraph vectors
-are concatenated with the word vectors.
-- Distributed Bag-of-words of Paragraph Vectors (PV-DBOW) where word vectors
-are not taken into account. Analogous to Skip-gram approach in Word2vec.
-It is simpler and more memory-efficient as word vectors do not need to be
-stored.
-These learned representations can serve to various tasks such as the
-classification/clustering of the document."""
-def doc2vec() :
-    pass
 
+class Doc2Vec():
+    """Doc2vec is a unsupervised algorithm.
+    There is two ways of building paragraph vectors:
+    - Distributed Memory Model of Paragraph Vectors (PV-DM) where paragraph vectors
+    are concatenated with the word vectors.
+    - Distributed Bag-of-words of Paragraph Vectors (PV-DBOW) where word vectors
+    are not taken into account. Analogous to Skip-gram approach in Word2vec.
+    It is simpler and more memory-efficient as word vectors do not need to be
+    stored.
+    These learned representations can serve to various tasks such as the
+    classification/clustering of the document."""
+    
+    def __init__(self):
+        pass
+    
 
 from gensim.test.utils import common_texts
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument

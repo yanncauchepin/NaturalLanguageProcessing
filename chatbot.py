@@ -33,30 +33,28 @@ class ChatBot():
                             'or by string for single question and its answer.')
         return questions, answers
     
-    def append_questions_answers(self, questions, answers):
-        questions, anwsers = ChatBot.check_questions_answers(questions, answers)
-        self.questions.extend(questions)
-        self.answers.extend(answers)
-        self.update = False
-        
-    def __init_chatbot(self):
-        # Check dataset excited
-        self.vectorizer = CountVectorizer(stop_words='english')
-        self.X_vec = self.vectorizer.fit_transform(questions)
-        self.tfidf_transformer = TfidfTransformer(norm='l2')
-        self.X_tfidf = self.tfidf_transformer.fit_transform(self.X_vec)
-        self.init = True
-        self.update = True
-        
-        
     @staticmethod
     def check_question(question):
         if isinstance(question, str):
             question = [question]
         # other treatment
         return question
-    
-        
+   
+    def append_questions_answers(self, questions, answers):
+        questions, anwsers = ChatBot.check_questions_answers(questions, answers)
+        self.questions.extend(questions)
+        self.answers.extend(answers)
+        self.update = False
+             
+    def __init_chatbot(self):
+        # Check dataset excited
+        self.vectorizer = CountVectorizer(stop_words='english')
+        self.X_vec = self.vectorizer.fit_transform(self.questions)
+        self.tfidf_transformer = TfidfTransformer(norm='l2')
+        self.X_tfidf = self.tfidf_transformer.fit_transform(self.X_vec)
+        self.init = True
+        self.update = True
+         
     def answer(self, question):
         # Check self.init = True
         # Check self.update = True
@@ -69,7 +67,6 @@ class ChatBot():
             return "Sorry, I do not understand that question."
         else:
             return self.answers[np.argmax(cosine_similarity(Y_tfidf, self.X_tfidf)[0])]
-    
     
     def run(self):
         self.__init_chatbot()
@@ -84,25 +81,37 @@ class ChatBot():
             else:
                 print(f"Q&A support: {self.answer(question)}")
         
+   
+class SoftwareChatBot():
     
+    def __init__(self):
+        pass
+    
+    @staticmethod
+    def run():
+        chatbot = ChatBot()
+        df_software = software_preprocessing.load_dataframe()
+        questions = df_software['questions']
+        answers = df_software['answers']
+        chatbot.append_questions_answers(questions, answers)
+        chatbot.run()
+        
+       
+class ElectronicsChatBot():
+    
+    def __init__(self):
+        pass
+    
+    def run():
+        chatbot = ChatBot()
+        df_electronics = electronics_preprocessing.load_dataframe()
+        questions = df_electronics['questions']
+        anwsers = df_electronics['answers']
+        chatbot.append_questions_answers(questions, answers)
+        chatbot.run()
+
     
 if __name__ == '__main__':
-    
-    chatbot = ChatBot()
-    
-    """Software dataset"""
-    df_software = software_preprocessing.load_dataframe()
-    questions = df_software['questions']
-    answers = df_software['answers']
-    chatbot.append_questions_answers(questions, answers)
-    
-    """Electronics dataset"""
-    '''
-    df_electronics = electronics_preprocessing.load_dataframe()
-    questions = df_electronics['questions']
-    anwsers = df_electronics['answers']
-    chatbot.append_questions_answers(questions, answers)
-    '''
-    
-    chatbot.run()
+    #SoftwareChatBot.run()
+    #ElectronicsChatBot.run()
     

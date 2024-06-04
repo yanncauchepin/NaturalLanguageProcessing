@@ -14,8 +14,3 @@ Before running this code, ensure you have the following :
 ## Input Dataset ##
 
 ## Usage ##
-
-## To do list ##
-
-- [ ] Complete README description.
-- [ ] Implementation in progress.

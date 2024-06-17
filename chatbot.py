@@ -85,10 +85,6 @@ class ChatBot():
 class SoftwareChatBot():
     
     def __init__(self):
-        pass
-    
-    @staticmethod
-    def run():
         chatbot = ChatBot()
         df_software = software_preprocessing.load_dataframe()
         questions = df_software['questions']
@@ -100,9 +96,6 @@ class SoftwareChatBot():
 class ElectronicsChatBot():
     
     def __init__(self):
-        pass
-    
-    def run():
         chatbot = ChatBot()
         df_electronics = electronics_preprocessing.load_dataframe()
         questions = df_electronics['questions']
@@ -112,6 +105,6 @@ class ElectronicsChatBot():
 
     
 if __name__ == '__main__':
-    #SoftwareChatBot.run()
-    #ElectronicsChatBot.run()
+    #SoftwareChatBot()
+    #ElectronicsChatBot()
     
